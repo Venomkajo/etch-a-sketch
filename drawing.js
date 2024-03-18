@@ -24,15 +24,15 @@ document.getElementById('gridSizeForm').addEventListener('submit', function(){
 
 });
 
-function addPixels(rowPixelAmount){
-    for (let i = 0; i < columnSize; i++){
+function addPixels(pixelAmount){
+    for (let i = 0; i < pixelAmount; i++){
 
         var row = document.createElement('div');
         row.classList.add('row');
 
         container.append(row);
 
-        for (let j = 0; j < rowPixelAmount; j++){
+        for (let j = 0; j < pixelAmount; j++){
 
             var newPixel = document.createElement('div');
             newPixel.classList.add('pixel');
