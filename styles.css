@@ -1,0 +1,32 @@
+body
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.header
+{
+    font-size: 24px;
+    text-align: center;
+}
+
+.container
+{
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    width: 600px;
+    height: 600px;
+    background-color: yellowgreen;
+    outline: black solid 1px;
+}
+
+.pixel
+{
+    flex: 1;
+    flex-wrap: wrap;
+    width: 10px;
+    outline: black solid 1px;
+}
