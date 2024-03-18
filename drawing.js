@@ -1,23 +1,38 @@
-const rowSize = 16;
+const columnSize = 16;
 var container = document.getElementById('container');
 var gridPixels;
 
 addPixels(16);
 
-gridPixels.forEach(pixel => {
-    pixel.addEventListener('mouseenter', function(){
-        pixel.style.backgroundColor = 'black';
-})});
+addDrawing();
 
-function addPixels(pixelAmount){
-    for (let i = 0; i < rowSize; i++){
+document.getElementById('gridSizeForm').addEventListener('submit', function(){
+    event.preventDefault();
+
+    let input = document.getElementById('newGridSize');
+    input = input.value;
+
+    if (input > -1 && input < 101){
+
+        clearPixels();
+        addPixels(input);
+        addDrawing();
+    }
+    else{
+        alert('Number must be from 0 to 100.')
+    }
+
+});
+
+function addPixels(rowPixelAmount){
+    for (let i = 0; i < columnSize; i++){
 
         var row = document.createElement('div');
         row.classList.add('row');
 
         container.append(row);
 
-        for (let j = 0; j < pixelAmount; j++){
+        for (let j = 0; j < rowPixelAmount; j++){
 
             var newPixel = document.createElement('div');
             newPixel.classList.add('pixel');
@@ -26,11 +41,22 @@ function addPixels(pixelAmount){
             row.append(newPixel);
         }
     }
-    
-
-    gridPixels = document.querySelectorAll('.pixel');
-
-    console.log(gridPixels);
 
 }
 
+function clearPixels(){
+    rows = document.querySelectorAll('.row')
+
+    rows.forEach(row => {
+        container.removeChild(row);
+    });
+}
+
+function addDrawing(){
+    gridPixels = document.querySelectorAll('.pixel');
+
+    gridPixels.forEach(pixel => {
+        pixel.addEventListener('mouseenter', function(){
+            pixel.style.backgroundColor = 'black';
+    })});
+}
